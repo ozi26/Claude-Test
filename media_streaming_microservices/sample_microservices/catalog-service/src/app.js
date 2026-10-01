@@ -6,16 +6,19 @@ const movies = [ // Create the in-memory catalogue used by this prototype.
   { id: 'm1', title: 'Ocean Signal', genre: 'Drama', year: 2026 }, // Define the first media item.
   { id: 'm2', title: 'Night Circuit', genre: 'Thriller', year: 2025 }, // Define the second media item.
   { id: 'm3', title: 'Green Horizon', genre: 'Adventure', year: 2024 }, // Define the third media item.
-]; // Finish the catalogue list.
+]; 
+// Finish the catalogue list.
 
 function sendJson(res, status, body) { // Send a JSON HTTP response.
   res.writeHead(status, { 'Content-Type': 'application/json' }); // Set the response status and content type.
   res.end(JSON.stringify(body)); // Serialize the body and finish the response.
-} // End sendJson.
+} 
+// End sendJson.
 
 function getMovie(id) { // Find one media item by its identifier.
   return movies.find((movie) => movie.id === id); // Return the matching item or undefined.
-} // End getMovie.
+} 
+// End getMovie.
 
 function handleRequest(req, res) { // Handle one incoming HTTP request.
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`); // Parse the request URL.
