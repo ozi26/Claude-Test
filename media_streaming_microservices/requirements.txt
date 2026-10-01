@@ -1,0 +1,3 @@
+# Python test and service requirements for the MediaStreamX prototype.
+# The Python services use only the standard library, so no third-party package is required.
+# The project is tested with Python 3.12 or newer within the Python 3.x family.

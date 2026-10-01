@@ -1,0 +1,50 @@
+[
+  {
+    "service": "catalog-service",
+    "language": "JavaScript",
+    "port": 8101,
+    "test_files": 2
+  },
+  {
+    "service": "streaming-service",
+    "language": "JavaScript",
+    "port": 8102,
+    "test_files": 2
+  },
+  {
+    "service": "auth-service",
+    "language": "Python",
+    "port": 8103,
+    "test_files": 2
+  },
+  {
+    "service": "recommendation-service",
+    "language": "Python",
+    "port": 8104,
+    "test_files": 2
+  },
+  {
+    "service": "watchlist-service",
+    "language": "Java",
+    "port": 8105,
+    "test_files": 0
+  },
+  {
+    "service": "history-service",
+    "language": "Java",
+    "port": 8106,
+    "test_files": 0
+  },
+  {
+    "service": "subscription-service",
+    "language": "C#",
+    "port": 8107,
+    "test_files": 0
+  },
+  {
+    "service": "notification-service",
+    "language": "C#",
+    "port": 8108,
+    "test_files": 0
+  }
+]

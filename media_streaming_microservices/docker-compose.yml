@@ -1,0 +1,50 @@
+# Define the complete MediaStreamX application.
+services:
+  # Build and run the JavaScript catalog service.
+  catalog-service:
+    build:
+      context: .
+      dockerfile: sample_microservices/catalog-service/Dockerfile
+    ports: ["8101:8101"]
+  # Build and run the JavaScript streaming service.
+  streaming-service:
+    build:
+      context: .
+      dockerfile: sample_microservices/streaming-service/Dockerfile
+    ports: ["8102:8102"]
+  # Build and run the Python authentication service.
+  auth-service:
+    build:
+      context: .
+      dockerfile: sample_microservices/auth-service/Dockerfile
+    ports: ["8103:8103"]
+  # Build and run the Python recommendation service.
+  recommendation-service:
+    build:
+      context: .
+      dockerfile: sample_microservices/recommendation-service/Dockerfile
+    ports: ["8104:8104"]
+  # Build and run the Java watchlist service.
+  watchlist-service:
+    build:
+      context: .
+      dockerfile: sample_microservices/watchlist-service/Dockerfile
+    ports: ["8105:8105"]
+  # Build and run the Java history service.
+  history-service:
+    build:
+      context: .
+      dockerfile: sample_microservices/history-service/Dockerfile
+    ports: ["8106:8106"]
+  # Build and run the C# subscription service.
+  subscription-service:
+    build:
+      context: .
+      dockerfile: sample_microservices/subscription-service/Dockerfile
+    ports: ["8107:8107"]
+  # Build and run the C# notification service.
+  notification-service:
+    build:
+      context: .
+      dockerfile: sample_microservices/notification-service/Dockerfile
+    ports: ["8108:8108"]

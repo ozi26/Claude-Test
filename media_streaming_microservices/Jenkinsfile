@@ -1,0 +1,41 @@
+// Jenkins pipeline for building, testing and smoke-testing the complete MediaStreamX platform.
+pipeline {
+    // Use a Jenkins agent that has Docker and the language toolchains installed.
+    agent any
+    // Define environment values shared by the pipeline stages.
+    environment {
+        COMPOSE_PROJECT_NAME = 'mediastreamx'
+    }
+    // Define the ordered CI/CD stages.
+    stages {
+        // Run the JavaScript unit and integration tests.
+        stage('JavaScript Tests') {
+            steps { sh 'cd sample_microservices/catalog-service && npm install && npm test -- --runInBand; cd ../streaming-service && npm install && npm test -- --runInBand' }
+        }
+        // Run the Python unit and integration tests.
+        stage('Python Tests') {
+            steps { sh 'python3 -m unittest discover -s sample_microservices/auth-service/tests -p "test_*.py"; python3 -m unittest discover -s sample_microservices/recommendation-service/tests -p "test_*.py"' }
+        }
+        // Run the Java Maven test suites.
+        stage('Java Tests') {
+            steps { sh 'cd sample_microservices/watchlist-service && mvn test; cd ../history-service && mvn test' }
+        }
+        // Run the C# test suites.
+        stage('CSharp Tests') {
+            steps { sh 'cd sample_microservices/subscription-service && dotnet test; cd ../notification-service && dotnet test' }
+        }
+        // Build every deployable service image.
+        stage('Build Images') {
+            steps { sh 'docker compose build' }
+        }
+        // Start the complete system for the deployment smoke test.
+        stage('Deployment Smoke Test') {
+            steps {
+                sh 'docker compose up -d'
+                sh 'python3 tests/integration_smoke_test.py'
+            }
+        }
+    }
+    // Always remove running containers after the pipeline finishes.
+    post { always { sh 'docker compose down --remove-orphans || true' } }
+}

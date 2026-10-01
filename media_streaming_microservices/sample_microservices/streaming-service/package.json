@@ -1,0 +1,8 @@
+{
+  "name": "streaming-service",
+  "version": "1.0.0",
+  "description": "Playback session service",
+  "main": "src/app.js",
+  "scripts": { "start": "node src/app.js", "test": "jest --runInBand" },
+  "devDependencies": { "jest": "^29.7.0" }
+}

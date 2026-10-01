@@ -1,0 +1,23 @@
+# Ignore Python cache directories.
+__pycache__/
+# Ignore Python bytecode files.
+*.pyc
+# Ignore Node dependency directories.
+node_modules/
+# Ignore Node coverage output.
+coverage/
+# Ignore Java build output.
+target/
+# Ignore .NET build output.
+bin/
+obj/
+# Ignore IDE metadata.
+.vscode/
+.idea/
+# Ignore OS metadata.
+.DS_Store
+Thumbs.db
+# Ignore generated reports.
+reports/
+# Ignore temporary logs.
+*.log
